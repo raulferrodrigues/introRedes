@@ -76,6 +76,21 @@ def codificador_HDB3(hex):
         resultado = resultado + ("0" * contadorDeZeros)
     return resultado
 
+def decodificador_HDB3(sinal):
+    sinalBinario = ""
+    for elem in range(0, len(sinal)):
+        if sinal[elem] == "B" or sinal[elem] == "V":
+            sinalBinario = sinalBinario + "0"
+        elif sinal[elem] == "+" or sinal[elem] == "-":
+            sinalBinario = sinalBinario + "1"
+        else:
+            sinalBinario = sinalBinario + sinal[elem]
+    print(sinalBinario)
+    return binToHex(sinalBinario)
+        
+    
+
+
 
 
 
@@ -83,5 +98,4 @@ def codificador_HDB3(hex):
 #print(decodificador_nrzi("---+++----+--+++"))
 print("Teste:\n")
 print(codificador_HDB3("60016263"))
-print("\n")
-print("0+-+00+-0+-000+00-+000-+")
+print(decodificador_HDB3(codificador_HDB3("60016263")))
